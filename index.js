@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 // require enviroment varaible
 dotenv.config(); 
 // connect mongoose
-mongoose.connect('mongodb+srv://lehkhacson:S@n01636511283@cluster0-ha8ih.gcp.mongodb.net/test?retryWrites=true&w=majority', { useUnifiedTopology: true, useNewUrlParser: true },
+mongoose.connect(process.env.MONGO_URL, { useUnifiedTopology: true, useNewUrlParser: true },
    () => console.log('connect to database'));
 
 
@@ -13,7 +13,7 @@ const apiBookRouter = require('./api/routes/book.route');
 
 const app = express();
 // use port 7000
-const port = process.env.PORT || 7000;
+let port = process.env.PORT || 7000;
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
