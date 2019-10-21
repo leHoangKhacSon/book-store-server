@@ -11,13 +11,19 @@ mongoose.connect(process.env.MONGO_URL, { useUnifiedTopology: true, useNewUrlPar
 // import module api router
 const apiBookRouter = require('./api/routes/book.route');
 
-const app = express();
+const app = express();  
 // use port 7000
-let port = process.env.PORT || 7000;
+const port = process.env.PORT || 7000;
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+// allow client connect 
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
 // create router api
 app.use('/api/books', apiBookRouter);
 
