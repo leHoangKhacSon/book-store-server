@@ -13,7 +13,7 @@ const apiBookRouter = require('./api/routes/book.route');
 
 const app = express();
 // use port 7000
-const port = 7000;
+const port = process.env.PORT || 7000;
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
