@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 // require enviroment varaible
 dotenv.config(); 
 // connect mongoose
-mongoose.connect(process.env.MONGO_URL, { useUnifiedTopology: true, useNewUrlParser: true },
+mongoose.connect('mongodb+srv://lehkhacson:S@n01636511283@cluster0-ha8ih.gcp.mongodb.net/test?retryWrites=true&w=majority', { useUnifiedTopology: true, useNewUrlParser: true },
    () => console.log('connect to database'));
 
 
