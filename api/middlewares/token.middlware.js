@@ -5,7 +5,7 @@ module.exports.checkToken = (req, res, next) => {
     // fetch token in request
     const token = req.headers.authorization;
     // verify token
-    jwt.verify(token, process.env.SECRET_KEY, (payload, err) => {
+    jwt.verify(token, process.env.SECRET_KEY, (err, payload) => {
       if(payload) {
         req.user = payload;
         next();
