@@ -3,7 +3,7 @@ const jwt = require('jsonwebtoken');
 module.exports.checkToken = (req, res, next) => {
   try {
     // fetch token in request
-    const token = req.headers.authorization;
+    const token = req.headers.authorization.split(' ')[1];
     // verify token
     jwt.verify(token, process.env.SECRET_KEY, (err, payload) => {
       if(payload) {
@@ -11,7 +11,7 @@ module.exports.checkToken = (req, res, next) => {
         next();
       } else {
         // if token exists but not valid
-        res.status(401).send('Unauthorized',err);
+        res.status(401).send('Unauthorized');
       }
     })
   } catch (error) {
