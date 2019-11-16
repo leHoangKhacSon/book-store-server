@@ -14,6 +14,9 @@ mongoose.connect(process.env.MONGO_URL, { useUnifiedTopology: true, useNewUrlPar
 // import module api router
 const apiBookRouter = require('./api/routes/book.route');
 const apiUserRouter = require('./api/routes/user.router');
+const apiTrendRouter = require('./api/routes/trend.route');
+const apiFollowRouter = require('./api/routes/follow.route');
+const apiPostRouter = require('./api/routes/post.route');
 
 const app = express();  
 // use port 7000
@@ -38,7 +41,9 @@ app.use(cors({
 // create router api
 app.use('/api/books', apiBookRouter);
 app.use('/api/user', apiUserRouter);
-
+app.use('/api/trends', apiTrendRouter);
+app.use('/api/follows', apiFollowRouter);
+app.use('/api/posts', apiPostRouter);
 
 app.get('/', function (req, res) {
   res.send('Hello World!')
